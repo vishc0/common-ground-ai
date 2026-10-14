@@ -9,15 +9,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="modules.css" />
 </head>
 <body>
   <div class="shell">
     <header>
       <a class="brand" href="#"><span class="mark">CG</span><span>common ground</span></a>
       <nav aria-label="Primary navigation">
-        <button class="nav-link active" data-view="home">Discover</button>
-        <button class="nav-link" data-view="map">Solution map</button>
-        <button class="nav-link" data-view="about">How it works</button>
+        <button class="nav-link active" data-view="home">Ask</button>
+        <button class="nav-link" data-view="explore">Explore</button>
+        <button class="nav-link" data-view="map">Tree of Life</button>
       </nav>
       <button class="profile-pill" aria-label="Open profile"><span>NE</span><b>New England</b></button>
     </header>
@@ -51,6 +52,11 @@
           <button id="askBtn">Explore solutions <span>→</span></button>
         </div>
         <div class="composer-foot"><span>🔒 Avoid names, addresses, or private details</span><span id="count">0 / 500</span></div>
+        <div class="tag-builder">
+          <div><b>Add up to 5 tags</b><small>Choose the most relevant ideas so this question can find its branch.</small></div>
+          <div class="tag-options" id="askTags"><button data-tag="Home"># Home</button><button data-tag="Costs"># Costs</button><button data-tag="Community"># Community</button><button data-tag="Work"># Work</button><button data-tag="Wellbeing"># Wellbeing</button><button data-tag="Education"># Education</button><button data-tag="Environment"># Environment</button></div>
+          <span class="tag-count" id="tagCount">0 of 5 selected</span>
+        </div>
       </section>
 
       <section class="topics">
@@ -76,26 +82,36 @@
       </section>
     </main>
 
-    <main id="map" class="view">
-      <section class="page-title"><p class="eyebrow">Living knowledge</p><h1>The solution map</h1><p>Follow how one question becomes a tested, adaptable answer.</p></section>
-      <section class="map-board">
-        <div class="map-node root"><small>QUESTION</small><b>Affordable emergency home repairs</b><span>326 participants</span></div>
-        <div class="branches">
-          <div class="map-node winner"><small>MOST USEFUL · 84%</small><b>Neighborhood repair circle</b><span>Best for stable local groups</span></div>
-          <div class="map-node"><small>ALTERNATIVE · 76%</small><b>Rotating emergency fund</b><span>Best for renters + owners</span></div>
-          <div class="map-node"><small>OPEN QUESTION</small><b>How should hardship exceptions work?</b><span>42 replies</span></div>
-        </div>
+    <main id="explore" class="view">
+      <section class="page-title explore-title"><p class="eyebrow">Module 02 · Explore</p><h1>Find a question worth moving forward.</h1><p>Search the collective, then narrow by no more than five meaningful tags.</p></section>
+      <section class="search-panel">
+        <label for="searchQuestions">Search questions</label>
+        <div class="search-box"><span>⌕</span><input id="searchQuestions" placeholder="Try “emergency repairs” or “shift schedule”…"><button id="clearSearch">Clear</button></div>
+        <div class="filter-head"><b>Filter by tags</b><span id="filterCount">0 / 5</span></div>
+        <div class="tag-options filters" id="filterTags"><button data-tag="Home">Home</button><button data-tag="Costs">Costs</button><button data-tag="Community">Community</button><button data-tag="Work">Work</button><button data-tag="Wellbeing">Wellbeing</button><button data-tag="Education">Education</button><button data-tag="Environment">Environment</button></div>
+      </section>
+      <section class="results-head"><b id="resultCount">4 questions</b><span>Most useful first</span></section>
+      <section class="question-list" id="questionList">
+        <article data-title="neighbors share emergency home repair costs conflict" data-tags="Home,Costs,Community"><div><span class="tag"># Home</span><span class="tag"># Costs</span><span class="tag"># Community</span></div><h3>How can neighbors share the cost of emergency home repairs without creating conflict?</h3><footer><b>84% useful</b><span>326 voices</span><button>Join the discussion →</button></footer></article>
+        <article data-title="shift workers swap schedules short notice fair" data-tags="Work,Community"><div><span class="tag"># Work</span><span class="tag"># Community</span></div><h3>What is a fair way for shift workers to swap schedules at short notice?</h3><footer><b>71% useful</b><span>184 voices</span><button>Evaluate answers →</button></footer></article>
+        <article data-title="local cooling center older residents usable" data-tags="Community,Wellbeing,Environment"><div><span class="tag"># Community</span><span class="tag"># Wellbeing</span><span class="tag"># Environment</span></div><h3>How do we make a local cooling center actually usable for older residents?</h3><footer><b>91% useful</b><span>508 voices</span><button>See solution map →</button></footer></article>
+        <article data-title="teach household budgeting teenagers school" data-tags="Education,Costs,Home"><div><span class="tag"># Education</span><span class="tag"># Costs</span><span class="tag"># Home</span></div><h3>What is a practical way to teach household budgeting to teenagers?</h3><footer><b>68% useful</b><span>92 voices</span><button>Improve this answer →</button></footer></article>
+        <p class="empty-state hidden" id="emptyState">No branch matches yet. Your search may be the seed of a new one.</p>
       </section>
     </main>
 
-    <main id="about" class="view">
-      <section class="page-title"><p class="eyebrow">A better answer loop</p><h1>Not Reddit. Not Quora.</h1><p>Discussion is part of the process—not the final product.</p></section>
-      <section class="principles">
-        <article><b>01</b><h3>Ask with context</h3><p>Share broad, non-identifying details that change what a useful answer looks like.</p></article>
-        <article><b>02</b><h3>See the rationale</h3><p>Get a concise proposal, assumptions, tradeoffs, and next steps—not hidden chain-of-thought.</p></article>
-        <article><b>03</b><h3>Improve together</h3><p>Say what worked, what did not, and why. Better alternatives rise through evidence and agreement.</p></article>
+    <main id="map" class="view">
+      <section class="page-title"><p class="eyebrow">Module 03 · Living knowledge</p><h1>The Tree of Life</h1><p>Every question starts as a seed. Shared meaning forms roots, branches, and leaves over time.</p></section>
+      <section class="tree-legend"><span><i class="seed-dot"></i> New seed</span><span><i class="branch-dot"></i> Connected branch</span><span><i class="fruit-dot"></i> Tested solution</span></section>
+      <section class="life-tree" aria-label="Interactive knowledge tree visualization">
+        <div class="canopy canopy-a"></div><div class="canopy canopy-b"></div><div class="canopy canopy-c"></div><div class="trunk"><span>COMMON<br>GROUND</span></div>
+        <button class="leaf l1" data-note="Home · Costs · 326 voices">Emergency repairs</button><button class="leaf l2" data-note="Community · Wellbeing · 508 voices">Cooling centers</button><button class="leaf l3" data-note="Work · Community · 184 voices">Shift swaps</button><button class="leaf l4" data-note="Education · Costs · 92 voices">Budgeting skills</button>
+        <button class="seed s1" data-note="A new, not-yet-connected question">New question</button><button class="seed s2" data-note="Waiting for related questions">New question</button>
+        <div class="tree-note" id="treeNote">Select a leaf to see the knowledge behind it.</div>
       </section>
+      <p class="tree-explain">Connections are suggested by shared tags, meaning, and community review. People can challenge a connection. No branch becomes “truth” simply because it is popular.</p>
     </main>
+
   </div>
 
   <dialog id="answerDialog">
