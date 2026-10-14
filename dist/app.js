@@ -1,0 +1,12 @@
+const views=document.querySelectorAll('.view');
+const nav=document.querySelectorAll('.nav-link');
+nav.forEach(button=>button.addEventListener('click',()=>{nav.forEach(x=>x.classList.remove('active'));button.classList.add('active');views.forEach(x=>x.classList.remove('active-view'));document.getElementById(button.dataset.view).classList.add('active-view');window.scrollTo({top:0,behavior:'smooth'});}));
+const question=document.getElementById('question');
+const count=document.getElementById('count');
+question.addEventListener('input',()=>count.textContent=`${question.value.length} / 500`);
+document.querySelectorAll('.chip:not(.add)').forEach(chip=>chip.addEventListener('click',()=>chip.classList.toggle('selected')));
+const dialog=document.getElementById('answerDialog');
+document.getElementById('askBtn').addEventListener('click',()=>{const text=question.value.trim();document.getElementById('echoQuestion').textContent=text||'How can I make progress on a difficult problem with the resources I have?';dialog.showModal();});
+document.querySelector('.close').addEventListener('click',()=>dialog.close());
+document.querySelectorAll('[data-rate]').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('[data-rate]').forEach(x=>x.classList.remove('chosen'));button.classList.add('chosen');if(button.dataset.rate==='yes'){document.getElementById('feedback').classList.add('hidden');document.getElementById('thanks').classList.remove('hidden')}else{document.getElementById('thanks').classList.add('hidden');document.getElementById('feedback').classList.remove('hidden')}}));
+document.getElementById('submitFeedback').addEventListener('click',()=>{document.getElementById('feedback').classList.add('hidden');document.getElementById('thanks').classList.remove('hidden')});

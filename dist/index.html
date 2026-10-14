@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Common Ground turns questions, AI guidance, and community feedback into reusable solution maps." />
+  <title>Common Ground AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <a class="brand" href="#"><span class="mark">CG</span><span>common ground</span></a>
+      <nav aria-label="Primary navigation">
+        <button class="nav-link active" data-view="home">Discover</button>
+        <button class="nav-link" data-view="map">Solution map</button>
+        <button class="nav-link" data-view="about">How it works</button>
+      </nav>
+      <button class="profile-pill" aria-label="Open profile"><span>NE</span><b>New England</b></button>
+    </header>
+
+    <main id="home" class="view active-view">
+      <section class="hero">
+        <div>
+          <p class="eyebrow"><span></span> Public knowledge, shaped together</p>
+          <h1>Ask a real question.<br><em>Find common ground.</em></h1>
+          <p class="lede">AI proposes a practical answer. People test it against lived experience. Together, we build solutions that work for more of us.</p>
+          <div class="promise"><span>∞</span><div><b>Free for people. Forever.</b><small>No ads. No sale of personal profiles. Public-benefit knowledge.</small></div></div>
+        </div>
+        <aside class="pulse-card">
+          <div class="pulse-head"><span>Community pulse</span><span class="live">LIVE</span></div>
+          <strong>78%</strong><p>of participants found a useful next step this week</p>
+          <div class="avatars"><i>AM</i><i>JL</i><i>SK</i><i>+2k</i></div>
+        </aside>
+      </section>
+
+      <section class="ask-card">
+        <div class="step"><b>01</b><span>Share only what helps</span></div>
+        <div class="context-row">
+          <button class="chip selected" data-group="location">📍 Northeast US</button>
+          <button class="chip" data-group="age">Age 25–34</button>
+          <button class="chip" data-group="role">First-time homeowner</button>
+          <button class="chip add">＋ Add context</button>
+        </div>
+        <label for="question">What problem are you trying to solve?</label>
+        <div class="composer">
+          <textarea id="question" rows="3" maxlength="500" placeholder="Describe the situation, what you've tried, and what a good outcome looks like…"></textarea>
+          <button id="askBtn">Explore solutions <span>→</span></button>
+        </div>
+        <div class="composer-foot"><span>🔒 Avoid names, addresses, or private details</span><span id="count">0 / 500</span></div>
+      </section>
+
+      <section class="topics">
+        <div class="section-head"><div><p class="eyebrow">What people are solving</p><h2>Questions moving forward</h2></div><button>View all →</button></div>
+        <div class="topic-grid">
+          <article class="topic-card featured" tabindex="0">
+            <div class="topic-meta"><span class="tag">HOME &amp; COSTS</span><span>2h ago</span></div>
+            <h3>How can neighbors share the cost of emergency home repairs without creating conflict?</h3>
+            <p class="answer-preview"><b>Leading approach</b> Start with a written, opt-in repair circle capped at a small monthly amount…</p>
+            <div class="agreement"><div><span style="width:84%"></span></div><b>84% useful</b><small>326 voices</small></div>
+          </article>
+          <article class="topic-card" tabindex="0">
+            <div class="topic-meta"><span class="tag green">WORK</span><span>5h ago</span></div>
+            <h3>What is a fair way for shift workers to swap schedules at short notice?</h3>
+            <div class="agreement"><div><span style="width:71%"></span></div><b>71% useful</b><small>184 voices</small></div>
+          </article>
+          <article class="topic-card" tabindex="0">
+            <div class="topic-meta"><span class="tag gold">COMMUNITY</span><span>Yesterday</span></div>
+            <h3>How do we make a local cooling center actually usable for older residents?</h3>
+            <div class="agreement"><div><span style="width:91%"></span></div><b>91% useful</b><small>508 voices</small></div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <main id="map" class="view">
+      <section class="page-title"><p class="eyebrow">Living knowledge</p><h1>The solution map</h1><p>Follow how one question becomes a tested, adaptable answer.</p></section>
+      <section class="map-board">
+        <div class="map-node root"><small>QUESTION</small><b>Affordable emergency home repairs</b><span>326 participants</span></div>
+        <div class="branches">
+          <div class="map-node winner"><small>MOST USEFUL · 84%</small><b>Neighborhood repair circle</b><span>Best for stable local groups</span></div>
+          <div class="map-node"><small>ALTERNATIVE · 76%</small><b>Rotating emergency fund</b><span>Best for renters + owners</span></div>
+          <div class="map-node"><small>OPEN QUESTION</small><b>How should hardship exceptions work?</b><span>42 replies</span></div>
+        </div>
+      </section>
+    </main>
+
+    <main id="about" class="view">
+      <section class="page-title"><p class="eyebrow">A better answer loop</p><h1>Not Reddit. Not Quora.</h1><p>Discussion is part of the process—not the final product.</p></section>
+      <section class="principles">
+        <article><b>01</b><h3>Ask with context</h3><p>Share broad, non-identifying details that change what a useful answer looks like.</p></article>
+        <article><b>02</b><h3>See the rationale</h3><p>Get a concise proposal, assumptions, tradeoffs, and next steps—not hidden chain-of-thought.</p></article>
+        <article><b>03</b><h3>Improve together</h3><p>Say what worked, what did not, and why. Better alternatives rise through evidence and agreement.</p></article>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="answerDialog">
+    <button class="close" aria-label="Close">×</button>
+    <p class="eyebrow">A starting point—not a verdict</p>
+    <h2>Your solution brief</h2>
+    <div class="response-question" id="echoQuestion"></div>
+    <ol>
+      <li><b>Clarify the outcome.</b> Write down the smallest result that would meaningfully improve the situation.</li>
+      <li><b>Run a reversible test.</b> Try one low-cost action for seven days and record what changes.</li>
+      <li><b>Compare with peers.</b> Review solutions from people with similar context before scaling the approach.</li>
+    </ol>
+    <div class="assumption"><b>Assumptions &amp; limits</b><p>This prototype response is illustrative. A production answer would cite sources, flag uncertainty, and route high-risk topics to qualified help.</p></div>
+    <fieldset><legend>Was this useful?</legend><div class="rating"><button data-rate="yes">Yes, it helped</button><button data-rate="partly">Partly</button><button data-rate="no">No</button></div></fieldset>
+    <div id="feedback" class="feedback hidden"><label for="why">What should change?</label><textarea id="why" placeholder="Missing context, wrong assumption, unsafe step, or a better solution…"></textarea><button id="submitFeedback">Share feedback</button></div>
+    <p id="thanks" class="thanks hidden">Thank you. Your feedback becomes part of the solution map.</p>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>
