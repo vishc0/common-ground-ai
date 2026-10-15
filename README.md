@@ -27,6 +27,8 @@ See [PRODUCT_REQUIREMENTS.md](PRODUCT_REQUIREMENTS.md) for the architecture, saf
 
 See [DEPLOYMENT_MVP.md](DEPLOYMENT_MVP.md) for the October 2026 free-tier deployment decision, quotas, request lifecycle, portability boundaries, and build sequence.
 
+See the [funding strategy](funding/README.md) for the GoFundMe draft, grant pipeline, corporate infrastructure programs, and funding data-room checklist.
+
 ## Status
 
 Early prototype. Contributions and discussion will open in stages after the initial constitution, moderation policy, and license are selected.
