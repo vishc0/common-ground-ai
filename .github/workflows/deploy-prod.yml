@@ -21,7 +21,8 @@ jobs:
         env:
           CLOUDFLARE_D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
       - name: Prepare deployment configuration
-        run: node -e "const fs=require('fs');const p='wrangler.jsonc';fs.writeFileSync(p,fs.readFileSync(p,'utf8').replace('REPLACE_WITH_D1_DATABASE_ID',process.env.CLOUDFLARE_D1_DATABASE_ID).replace('\"APP_ENV\": \"development\"','\"APP_ENV\": \"production\"'))"
+        run: |
+          node -e "const fs=require('fs');const p='wrangler.jsonc';fs.writeFileSync(p,fs.readFileSync(p,'utf8').replace('REPLACE_WITH_D1_DATABASE_ID',process.env.CLOUDFLARE_D1_DATABASE_ID).replace('\"APP_ENV\": \"development\"','\"APP_ENV\": \"production\"'))"
         env:
           CLOUDFLARE_D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
       - run: npx wrangler d1 migrations apply common-ground --remote --config wrangler.jsonc
