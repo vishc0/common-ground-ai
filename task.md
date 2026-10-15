@@ -1,6 +1,6 @@
 # Common Ground AI — MVP Task Tracker
 
-Last updated: 2026-10-14
+Last updated: 2026-10-15
 
 ## Current objective
 
@@ -54,11 +54,11 @@ Launch a safe, invitation-only MVP for 50–100 participants in one or two low-r
 - [x] Authenticate Wrangler to the selected Cloudflare account.
 - [ ] Create a staging D1 database.
 - [x] Create the initial Queue and configure its Worker consumer.
-- [ ] Create a Turnstile widget and store its secret outside Git.
+- [x] Create a Turnstile widget and store its secret outside Git. Both widget credentials are installed as Worker secrets; `/v1/config` confirms sessions are available.
 - [ ] Configure Workers AI and a hard daily inference budget.
 - [x] Deploy the initial production Worker and static assets at `https://common-ground-mvp.shivarama-aiagency.workers.dev`.
 - [x] Apply migration `0001_initial.sql` to the production D1 database.
-- [ ] Connect the frontend to the staging API.
+- [x] Connect Ask and Explore to the deployed API; browser-only questions are drafts, not generated answers.
 - [ ] Enable privacy-safe logs and quota alerts.
 - [ ] Run Ask → moderation → answer → Explore → thread end-to-end tests.
 - [ ] Test AI failure, queue retry, duplicate submission, quota exhaustion, and recovery.
@@ -126,8 +126,9 @@ Launch a safe, invitation-only MVP for 50–100 participants in one or two low-r
 - Cloudflare Worker version: `b8689536-bd60-44f9-84c4-1c757ef776b2`
 - Database migration: `0001_initial.sql`
 - Deployed: 2026-10-15
-- Activation gate: create a Turnstile widget and add `TURNSTILE_SECRET_KEY` to the GitHub `Prod` environment before enabling participant sessions.
+- Turnstile is configured for the deployed hostname. A human must complete browser verification for the first live submission test.
+- Seven tests cover basic moderation, tags, answer validation, retry behavior, and anonymous static asset access. Full browser verification is pending.
 
 ## Next action
 
-Correct the `CLOUDFLARE_ACCOUNT_ID` GitHub Environment secret, then re-run the one-time Cloudflare bootstrap workflow. Complete the pilot-topic decision while the remaining P0 work continues locally.
+Choose a usable initial pilot invitation code (the previously generated value is stored in GitHub secrets and cannot be retrieved), then complete the real Turnstile browser verification and submit a test question. Continue the remaining P0/P1 tasks before inviting participants.

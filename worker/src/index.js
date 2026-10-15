@@ -1,4 +1,5 @@
 import {screen,validateTags} from './policy.js';
+import {answerJob} from './answers.js';
 const json=(data,status=200,headers={})=>new Response(JSON.stringify(data),{status,headers:{'content-type':'application/json','cache-control':'no-store',...headers}});
 const uid=()=>crypto.randomUUID();
 async function hash(value,secret){const bytes=new TextEncoder().encode(`${secret}:${value}`);return[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(x=>x.toString(16).padStart(2,'0')).join('')}
@@ -36,4 +37,4 @@ async function api(request,env){
   if(request.method==='POST'&&request.headers.get('origin')&&request.headers.get('origin')!==url.origin)return json({error:'invalid_origin'},403);
   return router(request,env);
 }
-export default {async fetch(request,env){try{return await api(request,env)}catch{return json({error:'service_unavailable'},503)}},async queue(batch,env){for(const message of batch.messages){try{await processJob(message,env);message.ack()}catch{message.retry()}}}};
+export default {async fetch(request,env){try{return await api(request,env)}catch{return json({error:'service_unavailable'},503)}},async queue(batch,env){for(const message of batch.messages)await answerJob(message,env)}};

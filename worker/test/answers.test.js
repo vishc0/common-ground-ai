@@ -1,0 +1,7 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {parseAnswer,answerJob} from '../src/answers.js';
+const answer={best_case:'Compare energy bills.',why:'Find waste.',deeper_why:'Reduce shared resource use.',assumptions:'Local rates vary.',safety_notes:'Use qualified installers.'};
+test('parses structured answers and rejects missing or unsafe fields',()=>{assert.deepEqual(parseAnswer({response:JSON.stringify(answer)}),answer);assert.throws(()=>parseAnswer({response:'{}'}));assert.throws(()=>parseAnswer({response:JSON.stringify({...answer,why:'Email person@example.com'})}))});
+test('AI outage retries without prematurely failing the question',async()=>{let retried=false;const env={DB:{prepare:()=>({bind:()=>({first:async()=>({text:'Reduce energy costs?'})})})},AI:{run:async()=>{throw Error('unavailable')}}};await answerJob({body:{question_id:'q',job_id:'j'},attempts:1,ack:()=>assert.fail('must retry'),retry:()=>retried=true},env);assert.equal(retried,true)});
+test('static assets remain readable without session credentials',async()=>{const worker=(await import('../src/index.js')).default;const response=await worker.fetch(new Request('https://example.com/live.js'),{ASSETS:{fetch:async()=>new Response('asset')}});assert.equal(await response.text(),'asset')});
