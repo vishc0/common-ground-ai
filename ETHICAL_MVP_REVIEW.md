@@ -12,6 +12,7 @@ The project should build a plural, inspectable record of human needs, proposed s
 4. **Context labels were fictional.** Hard-coded location and age labels are replaced by the participant's optional browser-local profile.
 5. **Locally asked questions were not discoverable.** They now appear at the start of Explore and can open as threads in the same browser.
 6. **Data control was incomplete.** A context/data panel now explains storage and training status and provides a confirmed local-data reset.
+7. **Legacy unsafe records could reappear.** Explore now re-screens browser-local questions at read time, quarantining records that fail the current policy.
 
 ## Required before a public pilot
 
