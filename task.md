@@ -25,9 +25,10 @@ Launch a safe, invitation-only MVP for 50–100 participants in one or two low-r
 - [x] Create the GitHub Environment named `Prod`.
 - [x] Store `CLOUDFLARE_API_TOKEN` in the `Prod` Environment secrets.
 - [x] Store `CLOUDFLARE_ACCOUNT_ID` in the `Prod` Environment secrets.
-- [ ] Configure the deployment workflow with `environment: Prod`; environment secrets are unavailable to jobs that omit this declaration.
+- [ ] Correct `CLOUDFLARE_ACCOUNT_ID`: store only the Cloudflare Account ID (normally 32 hexadecimal characters), without a URL, label, spaces, or quotes.
+- [x] Configure the deployment workflow with `environment: Prod`; environment secrets are unavailable to jobs that omit this declaration.
 - [ ] Add required-reviewer or branch protection rules to the `Prod` Environment before automatic production deployment.
-- [ ] Verify the token with a read-only CI step without printing the token or secret values.
+- [ ] Re-run the bootstrap workflow to verify the corrected credentials without printing secret values.
 
 ## Implementation tasks
 
@@ -117,4 +118,4 @@ Launch a safe, invitation-only MVP for 50–100 participants in one or two low-r
 
 ## Next action
 
-Complete the pilot-topic decision and select the Cloudflare owner account. In parallel, begin P0 locally because it does not require cloud credentials.
+Correct the `CLOUDFLARE_ACCOUNT_ID` GitHub Environment secret, then re-run the one-time Cloudflare bootstrap workflow. Complete the pilot-topic decision while the remaining P0 work continues locally.

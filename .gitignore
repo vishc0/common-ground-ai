@@ -3,5 +3,6 @@ site.zip
 .env.*
 node_modules/
 .wrangler/
+.bootstrap-result/
 .DS_Store
 Thumbs.db

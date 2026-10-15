@@ -19,10 +19,28 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Validate Cloudflare credentials
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "${CLOUDFLARE_API_TOKEN:-}" ]]; then
+            echo "CLOUDFLARE_API_TOKEN is missing from the Prod environment." >&2
+            exit 1
+          fi
+          if [[ ! "${CLOUDFLARE_ACCOUNT_ID:-}" =~ ^[A-Za-z0-9_-]+$ ]]; then
+            echo "CLOUDFLARE_ACCOUNT_ID is invalid. Store only the Account ID, without a URL, label, spaces, or quotes." >&2
+            exit 1
+          fi
       - name: Create production D1 database
-        run: npx wrangler d1 create common-ground --location enam | tee d1-create.txt
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx wrangler d1 create common-ground --location enam | tee d1-create.txt
       - name: Create answer queue
-        run: npx wrangler queues create common-ground-answers | tee queue-create.txt
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx wrangler queues create common-ground-answers | tee queue-create.txt
       - name: Preserve bootstrap result
         uses: actions/upload-artifact@v4
         with:
