@@ -1,0 +1,16 @@
+PRAGMA foreign_keys = ON;
+CREATE TABLE participants (id TEXT PRIMARY KEY, created_at TEXT NOT NULL, deleted_at TEXT);
+CREATE TABLE sessions (token_hash TEXT PRIMARY KEY, participant_id TEXT NOT NULL, expires_at TEXT NOT NULL, created_at TEXT NOT NULL, FOREIGN KEY(participant_id) REFERENCES participants(id));
+CREATE TABLE profiles (participant_id TEXT PRIMARY KEY, schema_version TEXT NOT NULL, facets_json TEXT NOT NULL, updated_at TEXT NOT NULL, FOREIGN KEY(participant_id) REFERENCES participants(id));
+CREATE TABLE notice_acceptances (id TEXT PRIMARY KEY, participant_id TEXT NOT NULL, policy_version TEXT NOT NULL, accepted_at TEXT NOT NULL, FOREIGN KEY(participant_id) REFERENCES participants(id));
+CREATE TABLE dataset_consents (id TEXT PRIMARY KEY, participant_id TEXT NOT NULL, status TEXT NOT NULL CHECK(status IN ('none','granted','withdrawn')), policy_version TEXT NOT NULL, created_at TEXT NOT NULL, FOREIGN KEY(participant_id) REFERENCES participants(id));
+CREATE TABLE questions (id TEXT PRIMARY KEY, participant_id TEXT NOT NULL, text TEXT NOT NULL, status TEXT NOT NULL CHECK(status IN ('pending','published','rejected','needs_review','generation_failed')), created_at TEXT NOT NULL, published_at TEXT, FOREIGN KEY(participant_id) REFERENCES participants(id));
+CREATE TABLE answers (id TEXT PRIMARY KEY, question_id TEXT NOT NULL UNIQUE, response_json TEXT NOT NULL, model TEXT NOT NULL, policy_version TEXT NOT NULL, created_at TEXT NOT NULL, FOREIGN KEY(question_id) REFERENCES questions(id));
+CREATE TABLE tags (id TEXT PRIMARY KEY, label TEXT NOT NULL UNIQUE, active INTEGER NOT NULL DEFAULT 1);
+CREATE TABLE question_tags (question_id TEXT NOT NULL, tag_id TEXT NOT NULL, rank INTEGER NOT NULL CHECK(rank BETWEEN 1 AND 5), PRIMARY KEY(question_id,tag_id), FOREIGN KEY(question_id) REFERENCES questions(id), FOREIGN KEY(tag_id) REFERENCES tags(id));
+CREATE TABLE outbox_jobs (id TEXT PRIMARY KEY, kind TEXT NOT NULL, aggregate_id TEXT NOT NULL, status TEXT NOT NULL, attempts INTEGER NOT NULL DEFAULT 0, created_at TEXT NOT NULL, updated_at TEXT NOT NULL);
+CREATE TABLE idempotency_keys (participant_id TEXT NOT NULL, key TEXT NOT NULL, response_json TEXT NOT NULL, created_at TEXT NOT NULL, PRIMARY KEY(participant_id,key));
+CREATE TABLE moderation_events (id TEXT PRIMARY KEY, participant_id TEXT, content_hash TEXT NOT NULL, reason_code TEXT NOT NULL, policy_version TEXT NOT NULL, created_at TEXT NOT NULL);
+CREATE INDEX idx_questions_status_created ON questions(status,created_at DESC);
+CREATE INDEX idx_question_tags_tag ON question_tags(tag_id,question_id);
+INSERT INTO tags(id,label) VALUES ('home','Home'),('costs','Costs'),('community','Community'),('work','Work'),('wellbeing','Wellbeing'),('education','Education'),('environment','Environment');

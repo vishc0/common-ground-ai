@@ -33,14 +33,14 @@ Launch a safe, invitation-only MVP for 50–100 participants in one or two low-r
 
 ### P0 — Local functional vertical slice
 
-- [ ] Add Cloudflare Worker and Wrangler configuration.
-- [ ] Create the initial D1 schema and migrations.
+- [x] Add Cloudflare Worker and Wrangler configuration.
+- [x] Create the initial D1 schema and migrations.
 - [ ] Implement invitation-code verification and server-issued pseudonymous sessions.
 - [ ] Implement profile storage using the versioned demographic schema.
-- [ ] Implement the server-side privacy and safety gateway.
-- [ ] Implement question creation with five-tag enforcement and idempotency.
-- [ ] Implement the D1 transactional outbox.
-- [ ] Add a mock AI provider and validate the three-tier response schema.
+- [x] Implement the initial server-side privacy and safety gateway.
+- [x] Implement question creation with five-tag enforcement and idempotency.
+- [x] Implement the D1 transactional outbox.
+- [x] Add the AI provider boundary and validate the three-tier response schema.
 - [ ] Make locally created questions available through the API and Explore.
 - [ ] Add participant reset/deletion endpoints.
 - [ ] Add contract tests for privacy, authorization, moderation, tag limits, idempotency, and deletion.

@@ -1,0 +1,15 @@
+{
+  "name": "common-ground-ai",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node --check worker/src/index.js && node --test worker/test/*.test.js",
+    "dev": "wrangler dev --config wrangler.jsonc",
+    "deploy": "wrangler deploy --config wrangler.jsonc",
+    "db:local": "wrangler d1 migrations apply common-ground --local --config wrangler.jsonc",
+    "db:prod": "wrangler d1 migrations apply common-ground --remote --config wrangler.jsonc"
+  },
+  "devDependencies": {
+    "wrangler": "^4.45.0"
+  }
+}
