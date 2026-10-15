@@ -21,7 +21,7 @@ export async function answerJob(message,env){
       env.DB.prepare("UPDATE outbox_jobs SET status='complete',updated_at=? WHERE id=?").bind(now,job_id)
     ]);message.ack();
   }catch{
-    if(message.attempts>=3){await env.DB.batch([env.DB.prepare("UPDATE questions SET status='generation_failed' WHERE id=?").bind(question_id),env.DB.prepare("UPDATE outbox_jobs SET status='failed',updated_at=? WHERE id=?").bind(new Date().toISOString(),job_id)]);message.ack()}
+    if(message.attempts>=2){await env.DB.batch([env.DB.prepare("UPDATE questions SET status='generation_failed' WHERE id=?").bind(question_id),env.DB.prepare("UPDATE outbox_jobs SET status='failed',updated_at=? WHERE id=?").bind(new Date().toISOString(),job_id)]);message.ack()}
     else message.retry({delaySeconds:10});
   }
 }

@@ -6,7 +6,7 @@
   "assets": { "directory": "./dist", "binding": "ASSETS", "run_worker_first": ["/v1/*", "/healthz"] },
   "observability": { "enabled": true, "head_sampling_rate": 0.1 },
   "d1_databases": [{ "binding": "DB", "database_name": "common-ground", "database_id": "REPLACE_WITH_D1_DATABASE_ID", "migrations_dir": "worker/migrations" }],
-  "queues": { "producers": [{ "binding": "ANSWER_QUEUE", "queue": "common-ground-answers" }], "consumers": [{ "queue": "common-ground-answers", "max_batch_size": 5, "max_batch_timeout": 5, "max_retries": 2 }] },
+  "queues": { "producers": [{ "binding": "ANSWER_QUEUE", "queue": "common-ground-answers" }], "consumers": [{ "queue": "common-ground-answers", "max_batch_size": 5, "max_batch_timeout": 5, "max_retries": 1 }] },
   "ai": { "binding": "AI" },
   "vars": { "APP_ENV": "development", "ALLOWED_ORIGIN": "http://localhost:8787", "AI_MODEL": "@cf/meta/llama-3.1-8b-instruct-fast" }
 }
