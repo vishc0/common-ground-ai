@@ -4,7 +4,7 @@ Last updated: 2026-10-15
 
 ## Current objective
 
-Launch a safe, invitation-only MVP for 50–100 participants in one or two low-risk topic areas. The MVP must support pseudonymous sessions, optional coarse context, screened questions, structured AI answers, reviewed tags, Explore, reactions/comments, and the initial Tree of Life.
+Build the MVP with open submissions after safety-notice acceptance and bot verification. Invitation codes were removed at the user's request. The MVP must support pseudonymous sessions, optional coarse context, screened questions, structured AI answers, reviewed tags, Explore, reactions/comments, and the initial Tree of Life. See `RESUME.md` for the latest handoff and known limitations.
 
 ## Your immediate tasks
 
@@ -122,13 +122,13 @@ Launch a safe, invitation-only MVP for 50–100 participants in one or two low-r
 ## Current deployment
 
 - Worker URL: `https://common-ground-mvp.shivarama-aiagency.workers.dev`
-- Deployed commit: `ec0f8246fa595d436917b297a5eb778147ede32c`
-- Cloudflare Worker version: `b8689536-bd60-44f9-84c4-1c757ef776b2`
-- Database migration: `0001_initial.sql`
+- Deployed commit: `49ae3f7`
+- Cloudflare Worker version reported by deploy: `fa2bc57c-8e6f-41d3-b945-5e18647cf0f4` (secret installation creates subsequent versions).
+- Database migrations: `0001_initial.sql`, `0002_comments.sql`
 - Deployed: 2026-10-15
 - Turnstile is configured for the deployed hostname. A human must complete browser verification for the first live submission test.
-- Seven tests cover basic moderation, tags, answer validation, retry behavior, and anonymous static asset access. Full browser verification is pending.
+- Eight tests cover basic moderation, tags, answer validation, a maximum of two generation attempts, and anonymous static asset access. Full browser verification is pending.
 
 ## Next action
 
-Choose a usable initial pilot invitation code (the previously generated value is stored in GitHub secrets and cannot be retrieved), then complete the real Turnstile browser verification and submit a test question. Continue the remaining P0/P1 tasks before inviting participants.
+Resume from `RESUME.md`. Verify the full question-to-answer flow using real browser verification, then address the documented rate limits, inference budget, persistence, and deletion gaps. Invitation codes are no longer required.
