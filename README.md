@@ -28,6 +28,8 @@ See [PRODUCT_REQUIREMENTS.md](PRODUCT_REQUIREMENTS.md) for the architecture, saf
 
 See [DEPLOYMENT_MVP.md](DEPLOYMENT_MVP.md) for the October 2026 free-tier deployment decision, quotas, request lifecycle, portability boundaries, and build sequence.
 
+See [MVP_DELIVERY_PLAN.md](MVP_DELIVERY_PLAN.md) for deployable components, API boundaries, environments, milestones, launch gates, and the first implementation sprint.
+
 See the [funding strategy](funding/README.md) for the GoFundMe draft, grant pipeline, corporate infrastructure programs, and funding data-room checklist.
 
 ## Status

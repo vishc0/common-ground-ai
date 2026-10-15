@@ -41,7 +41,8 @@ Do not use Hugging Face free inference as the primary production dependency. The
 
 ```text
 Browser PWA
-  ├─ terms + schema-driven demographics + pseudonymous UID
+  ├─ terms + schema-driven demographics
+  ├─ server-issued pseudonymous session cookie
   └─ HTTPS JSON API
        └─ Worker modular monolith
             ├─ synchronous: validate, redact, classify, store
@@ -51,9 +52,11 @@ Browser PWA
             └─ scheduled cleanup: retention, deletion, aggregates
 ```
 
+The browser-generated UID is prototype-only. The functional pilot replaces it with an opaque, server-issued session in a `Secure`, `HttpOnly`, `SameSite=Lax` cookie. It is not identity proof and must not be derived from profile values or device fingerprinting.
+
 ## Request lifecycle
 
-1. Client submits UID, profile schema version, coarse profile, question, intent confirmation, and selected tags.
+1. Client submits its server session, profile schema version, coarse profile, question, intent confirmation, and reviewed tag suggestions.
 2. API enforces size limits, five-tag maximum, rate limit, Turnstile, and idempotency key.
 3. Deterministic PII and abuse checks run before persistence. Suspected content is rejected or quarantined—not merely logged.
 4. Safe question record is stored with a transactional outbox event.
@@ -61,6 +64,30 @@ Browser PWA
 6. Client polls or receives the completed answer. Reading remains available if AI is down.
 7. Agree/disagree/pass, reason, follow, and favorite are separate idempotent events.
 8. A later worker proposes tags and graph edges; human/community review can accept or challenge them.
+
+## MVP deployable components
+
+| Component | Deployable | Responsibility | MVP scaling boundary |
+|---|---|---|---|
+| Web app | Static assets served by the Worker | Consent, context, Ask, Explore, thread and Tree UI | Edge-cached assets |
+| API | Same Worker, `/v1/*` routes | Sessions, validation, reads, writes, authorization and response contracts | Stateless Worker instances |
+| Job consumer | Queue consumer exported by the same Worker | Model moderation, answer generation and tag proposal | Queue concurrency |
+| Database | One D1 database per environment | Private profiles, public content, consent receipts, jobs and audit events | Indexed relational access |
+| AI adapter | Workers AI binding | Moderation and structured answer generation | Daily neuron budget and circuit breaker |
+| Abuse defense | Turnstile + application rate limits | Protect session creation and writes | Per-session, per-IP hash and global limits |
+| Operations | Workers Logs + D1 metrics | Privacy-safe failures, latency, quota and safety counters | Sampled logs; never raw questions |
+
+Do not split these into separately deployed services for the pilot. Keep module interfaces inside the Worker so a measured bottleneck can be extracted later.
+
+## Environments and promotion
+
+| Environment | Data | Audience | Deployment rule |
+|---|---|---|---|
+| Local | Local D1 and mock AI | Developers | Migrations and contract tests must pass |
+| Staging | Separate D1, queue and AI budget | Invited testers | Deploy from `main`; synthetic data may be reset |
+| Pilot | Separate D1 and secrets | 50–100 invited participants | Promote an immutable tested commit; migrations first |
+
+Never point staging at pilot data. Bindings are non-inheritable across Wrangler environments, so every database, queue, AI binding, variable and secret must be declared or verified per environment.
 
 ## Zero-cost pilot guardrails
 
