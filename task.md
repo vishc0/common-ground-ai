@@ -25,7 +25,9 @@ Launch a safe, invitation-only MVP for 50–100 participants in one or two low-r
 - [x] Create the GitHub Environment named `Prod`.
 - [x] Store `CLOUDFLARE_API_TOKEN` in the `Prod` Environment secrets.
 - [x] Store `CLOUDFLARE_ACCOUNT_ID` in the `Prod` Environment secrets.
-- [ ] Correct `CLOUDFLARE_ACCOUNT_ID`: store only the Cloudflare Account ID (normally 32 hexadecimal characters), without a URL, label, spaces, or quotes.
+- [x] Correct `CLOUDFLARE_ACCOUNT_ID`: store only the Cloudflare Account ID (normally 32 hexadecimal characters), without a URL, label, spaces, or quotes.
+- [x] Create the production D1 database and store its ID in `Prod` as `CLOUDFLARE_D1_DATABASE_ID`.
+- [ ] Add Account → Queues → Edit to the existing Cloudflare API token; the first queue request failed with API code 10013.
 - [x] Configure the deployment workflow with `environment: Prod`; environment secrets are unavailable to jobs that omit this declaration.
 - [ ] Add required-reviewer or branch protection rules to the `Prod` Environment before automatic production deployment.
 - [ ] Re-run the bootstrap workflow to verify the corrected credentials without printing secret values.
@@ -48,7 +50,7 @@ Launch a safe, invitation-only MVP for 50–100 participants in one or two low-r
 
 ### P1 — Staging deployment
 
-- [ ] Authenticate Wrangler to the selected Cloudflare account.
+- [x] Authenticate Wrangler to the selected Cloudflare account.
 - [ ] Create a staging D1 database.
 - [ ] Create a staging Queue and consumer.
 - [ ] Create a Turnstile widget and store its secret outside Git.
