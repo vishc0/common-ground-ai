@@ -15,6 +15,33 @@ Status checked October 14, 2026. Recheck every deadline and eligibility requirem
 - **Action:** contact potential nonprofit sponsor immediately; proceed only with confirmed eligibility.
 - **Official source:** [Humanity AI open call](https://omidyar.com/update/humanity-ai-10-million-open-call-grants/).
 
+### Atlassian Foundation Collective Action Open Call
+
+- **Fit:** High only through a registered nonprofit coalition serving disadvantaged learners.
+- **Deadline:** October 30, 2026 at 11:59 p.m. AEDT.
+- **Funding:** Up to US$1 million over two years from an US$8 million call.
+- **Eligibility:** Registered nonprofits globally; requires collective action, direct relief of disadvantage, and education evolving in the AI era.
+- **Proposal angle:** a coalition-led pilot teaching disadvantaged adult or youth learners to critically evaluate AI answers, preserve community knowledge, and shape safe use on their own terms.
+- **Gap:** nonprofit lead, multiple committed delivery partners, defined disadvantaged learner group, and education outcomes.
+- **Official source:** [Atlassian Foundation open call](https://www.atlassian.com/blog/company-news/atlassian-foundation-open-call-for-proposals-2026).
+
+### Meta Future Is for Everyone Fund
+
+- **Fit:** Conditional on a named nonprofit/community organization in an eligible U.S. Meta data-center location.
+- **Deadline:** October 19, 2026.
+- **Themes:** education, community enhancement, workforce development, and sustainability.
+- **Proposal angle:** a place-based community problem-solving pilot; do not apply as a generic global platform.
+- **Gap:** location eligibility and local nonprofit/community partner.
+- **Official source:** [Future Is for Everyone Fund](https://datacenters.atmeta.com/the-future-is-for-everyone-fund/).
+
+### NSF America’s Seed Fund Project Pitch
+
+- **Fit:** For-profit R&D track only if the team can articulate genuinely high-risk technical innovation—not ordinary application development.
+- **Timing:** Project Pitches are the required first step; full proposals require an invitation and have scheduled submission windows.
+- **Proposal angle:** research into manipulation-resistant, cohort-aware consensus/knowledge-graph methods with measurable technical uncertainty and commercial/public impact.
+- **Gap:** eligible U.S. small business, technical R&D hypothesis, competitive analysis, and qualified team.
+- **Official sources:** [Project Pitch](https://seedfund.nsf.gov/project-pitch/) and [applicant guidance](https://seedfund.nsf.gov/resources/applicants/).
+
 ## Rolling/current in-kind research support
 
 ### OpenAI Researcher Access Program
@@ -56,6 +83,8 @@ Do not submit a major proposal until at least 8/10 are complete:
 ## Reusable grant abstract
 
 > Common Ground AI will test a community-governed method for turning AI-assisted problem solving into reusable public knowledge. Participants provide optional coarse context, ask a good-faith question, receive a structured answer with assumptions and uncertainty, and record agreement, disagreement, alternatives, and later outcomes. A transparent knowledge graph connects questions only when tags, meaning, evidence, and community review support the relationship. The pilot will evaluate usefulness, safety, privacy, cohort parity, manipulation resistance, and cost. Outputs will include a working prototype, public schemas, a versioned safety constitution, evaluation findings, and reusable open components.
+
+Adapt the first and last sentences to the funder's interest; do not change the core method or invent outcomes. Use [THEMATIC_FUNDING_MAP.md](THEMATIC_FUNDING_MAP.md) to select a pilot and metrics.
 
 ## Evidence to produce during the pilot
 

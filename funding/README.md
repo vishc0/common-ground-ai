@@ -6,6 +6,8 @@ Common Ground AI should fund its public-benefit core without charging ordinary p
 2. **Grants and philanthropy** — fund safety, community research, accessibility, governance, and open public infrastructure.
 3. **Corporate in-kind support** — cloud credits, AI credits, security, mentorship, and technical review.
 
+The platform is deliberately cross-sector. Applications should use a **core platform + themed pilot** approach: align one pilot with a funder's legitimate interest while keeping the underlying mission, governance, and technical architecture independent. See the [thematic funding map](THEMATIC_FUNDING_MAP.md).
+
 This directory is a working funding pack, not legal, tax, or fundraising advice. Eligibility, deadlines, and terms must be rechecked immediately before applying.
 
 ## Recommended entity strategy to evaluate
@@ -46,3 +48,4 @@ Do not call donations tax-deductible unless the fundraiser is operated through a
 - [Grant pipeline](GRANT_PIPELINE.md)
 - [Corporate partnerships](CORPORATE_PARTNERSHIPS.md)
 - [Funding data room](DATA_ROOM.md)
+- [Thematic funding map](THEMATIC_FUNDING_MAP.md)
