@@ -37,6 +37,7 @@ jobs:
         run: |
           set -euo pipefail
           test -n "${CLOUDFLARE_D1_DATABASE_ID:-}"
+          node -e "const fs=require('fs');const p='wrangler.jsonc';fs.writeFileSync(p,fs.readFileSync(p,'utf8').replace('REPLACE_WITH_D1_DATABASE_ID',process.env.CLOUDFLARE_D1_DATABASE_ID))"
           npx wrangler d1 info common-ground | tee d1-info.txt
       - name: Create answer queue
         shell: bash
