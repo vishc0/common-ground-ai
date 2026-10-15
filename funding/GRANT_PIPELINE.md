@@ -82,7 +82,7 @@ Do not submit a major proposal until at least 8/10 are complete:
 
 ## Reusable grant abstract
 
-> Common Ground AI will test a community-governed method for turning AI-assisted problem solving into reusable public knowledge. Participants provide optional coarse context, ask a good-faith question, receive a structured answer with assumptions and uncertainty, and record agreement, disagreement, alternatives, and later outcomes. A transparent knowledge graph connects questions only when tags, meaning, evidence, and community review support the relationship. The pilot will evaluate usefulness, safety, privacy, cohort parity, manipulation resistance, and cost. Outputs will include a working prototype, public schemas, a versioned safety constitution, evaluation findings, and reusable open components.
+> Common Ground AI will test a community-stewarded method for turning AI-assisted problem solving into reusable public knowledge. Participants provide optional coarse context, ask a good-faith question, receive a structured answer with assumptions and uncertainty, and record agreement, disagreement, alternatives, and later outcomes. A transparent knowledge graph connects questions only when tags, meaning, evidence, and community review support the relationship. The pilot will evaluate usefulness, safety, privacy, cohort parity, manipulation resistance, and cost. Outputs will include a working prototype, public schemas, versioned shared-learning guidelines, evaluation findings, and reusable open components.
 
 Adapt the first and last sentences to the funder's interest; do not change the core method or invent outcomes. Use [THEMATIC_FUNDING_MAP.md](THEMATIC_FUNDING_MAP.md) to select a pilot and metrics.
 
@@ -93,6 +93,6 @@ Adapt the first and last sentences to the funder's interest; do not change the c
 - false-positive/negative rates for safety and PII checks;
 - differences in answer quality across coarse cohorts;
 - cost per question and useful outcome;
-- community governance decisions and appeals;
+- community stewardship decisions and appeals;
 - independent evaluator or advisor letter;
 - security and privacy remediation log.

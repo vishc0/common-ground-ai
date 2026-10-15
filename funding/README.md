@@ -3,10 +3,10 @@
 Common Ground AI should fund its public-benefit core without charging ordinary participants or selling personal profiles. Use three parallel tracks:
 
 1. **Community crowdfunding** — validate that people understand and support the mission.
-2. **Grants and philanthropy** — fund safety, community research, accessibility, governance, and open public infrastructure.
+2. **Grants and philanthropy** — fund safety, community research, accessibility, stewardship, and open public infrastructure.
 3. **Corporate in-kind support** — cloud credits, AI credits, security, mentorship, and technical review.
 
-The platform is deliberately cross-sector. Applications should use a **core platform + themed pilot** approach: align one pilot with a funder's legitimate interest while keeping the underlying mission, governance, and technical architecture independent. See the [thematic funding map](THEMATIC_FUNDING_MAP.md).
+The platform is deliberately cross-sector. Applications should use a **core platform + themed pilot** approach: align one pilot with a funder's legitimate interest while keeping the underlying mission, community stewardship, and technical architecture independent. See the [thematic funding map](THEMATIC_FUNDING_MAP.md).
 
 This directory is a working funding pack, not legal, tax, or fundraising advice. Eligibility, deadlines, and terms must be rechecked immediately before applying.
 
@@ -27,7 +27,7 @@ Do not call donations tax-deductible unless the fundraiser is operated through a
 | 0–60 days | Secure $2,000–$10,000 infrastructure credits | Public site, GitHub activity, domain email, entity/founder profile |
 | 0–90 days | Submit 3–5 aligned grant applications | Fiscal sponsor/entity, pilot partner, safeguarding policy, measurable outcomes |
 | 3–6 months | Fund a 100-person closed pilot | Safety results, usefulness data, cost per answer, letters of support |
-| 6–12 months | Seek $150,000–$500,000 institutional round | Independent evaluation, governance, retention, audited budget, implementation roadmap |
+| 6–12 months | Seek $150,000–$500,000 institutional round | Independent evaluation, stewardship, retention, audited budget, implementation roadmap |
 
 ## Funding narrative
 

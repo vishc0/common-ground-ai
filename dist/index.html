@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="modules.css" />
   <link rel="stylesheet" href="onboarding.css" />
   <link rel="stylesheet" href="experience.css" />
+  <link rel="stylesheet" href="ethics.css" />
 </head>
 <body>
   <section class="gate" id="gate" aria-labelledby="gateTitle">
@@ -20,7 +21,7 @@
       <div id="termsStep">
         <p class="eyebrow">Before you continue</p><h1 id="gateTitle">Terms, privacy &amp; safety notice</h1>
         <div class="warning"><b>This software cannot reliably detect or remove every private detail.</b><p>Do not enter names, exact addresses, phone numbers, email addresses, account numbers, private records, secrets, or information about another person. Automated checks can miss information, especially when it is disguised or included intentionally.</p></div>
-        <ul class="plain-terms"><li>Answers are generated guidance, may be wrong, and are not professional medical, legal, financial, emergency, or safety advice.</li><li>Questions should be asked in good faith with a direction that could benefit people—not to target, exploit, deceive, or harm.</li><li>We minimize what we collect and try to flag risky content, but safeguards are imperfect. Submissions may be stored, moderated, or removed.</li><li>Your anonymous browser ID is not proof of identity. Losing browser data may create a new ID.</li></ul>
+        <ul class="plain-terms"><li>Answers are generated guidance, may be wrong, and are not professional medical, legal, financial, emergency, or safety advice.</li><li>Questions should be asked in good faith with a direction that could benefit people—not to target, exploit, deceive, or harm.</li><li>This prototype stores your profile, questions, reactions, and comments only in this browser. Future public storage will require a separate notice.</li><li>Your browser ID is pseudonymous—not proof of identity. Clearing browser data may create a new ID.</li><li><b>Participation is not consent to AI training.</b> This prototype does not send contributions into a training dataset. Any future dataset program must use a separate, optional, informed choice.</li></ul>
         <label class="consent"><input type="checkbox" id="termsConsent"> I understand these limitations and will not submit identifying, confidential, illegal, or harmful information.</label>
         <button class="primary" id="continueTerms" disabled>Continue safely →</button>
         <small>Prototype notice · policy version 0.2 · not a substitute for a lawyer-reviewed Terms of Use and Privacy Notice.</small>
@@ -39,30 +40,27 @@
         <button class="nav-link" data-view="explore">Explore</button>
         <button class="nav-link" data-view="map">Tree of Life</button>
       </nav>
-      <button class="profile-pill" aria-label="Open profile"><span>NE</span><b>New England</b></button>
+      <button class="profile-pill" id="openDataPanel" aria-label="Open context and data controls"><span id="profileMark">CG</span><b id="profileLabel">My context</b></button>
     </header>
 
     <main id="home" class="view active-view">
       <section class="hero">
         <div>
-          <p class="eyebrow"><span></span> Public knowledge, shaped together</p>
+          <p class="eyebrow"><span></span> Shared learning, shaped together</p>
           <h1>Ask a real question.<br><em>Find common ground.</em></h1>
-          <p class="lede">AI proposes a practical answer. People test it against lived experience. Together, we build solutions that work for more of us.</p>
-          <div class="promise"><span>∞</span><div><b>Free for people. Forever.</b><small>No ads. No sale of personal profiles. Public-benefit knowledge.</small></div></div>
+          <p class="lede">AI proposes a practical answer. People test it against lived experience. Together, we preserve many human perspectives and build reusable learning—not one enforced worldview.</p>
+          <div class="promise"><span>∞</span><div><b>Free for people. Forever.</b><small>No ads. No sale of profiles. No training use without a separate opt-in.</small></div></div>
         </div>
         <aside class="pulse-card">
-          <div class="pulse-head"><span>Community pulse</span><span class="live">LIVE</span></div>
-          <strong>78%</strong><p>of participants found a useful next step this week</p>
-          <div class="avatars"><i>AM</i><i>JL</i><i>SK</i><i>+2k</i></div>
+          <div class="pulse-head"><span>Prototype snapshot</span><span class="live">SAMPLE</span></div>
+          <strong>10</strong><p>illustrative questions available to explore. No live community metric is claimed yet.</p>
+          <div class="avatars"><i>Q</i><i>A</i><i>↔</i><i>Learn</i></div>
         </aside>
       </section>
 
       <section class="ask-card">
         <div class="step"><b>01</b><span>Share only what helps</span></div>
-        <div class="context-row">
-          <button class="chip selected" data-group="location">📍 Northeast US</button>
-          <button class="chip" data-group="age">Age 25–34</button>
-          <button class="chip" data-group="role">First-time homeowner</button>
+        <div class="context-row" id="contextSummary">
           <button class="chip add" id="addContext">＋ Add / edit context</button>
         </div>
         <label for="question">What problem are you trying to solve?</label>
@@ -103,7 +101,7 @@
     </main>
 
     <main id="explore" class="view">
-      <section class="page-title explore-title"><p class="eyebrow">Module 02 · Explore</p><h1>Find a question worth moving forward.</h1><p>Search the collective, then narrow by no more than five meaningful tags.</p></section>
+      <section class="page-title explore-title"><p class="eyebrow">Module 02 · Explore</p><h1>Find a question worth moving forward.</h1><p>Search shared learning, then narrow by no more than five meaningful tags.</p></section>
       <section class="search-panel">
         <label for="searchQuestions">Search questions</label>
         <div class="search-box"><span>⌕</span><input id="searchQuestions" placeholder="Try “emergency repairs” or “shift schedule”…"><button id="clearSearch">Clear</button></div>
@@ -127,7 +125,7 @@
         <div class="knowledge-level level-5"><span>LEVEL 5 · LEAVES</span><button data-note="Home · Costs · Community">Repair circle?</button><button data-note="Education · Costs · Home">Teach budgeting?</button><button data-note="Work · Community">Fair shift swaps?</button><button data-note="Community · Wellbeing · Environment">Cooling center?</button><button class="unlinked" data-note="New seed waiting for reliable connections">Unlinked seed</button></div>
         <div class="tree-note" id="treeNote">Select a node to inspect its place in the hierarchy.</div>
       </section>
-      <p class="tree-explain">Connections are suggested by shared tags, meaning, and community review. People can challenge a connection. No branch becomes “truth” simply because it is popular.</p>
+      <p class="tree-explain">Connections are suggested by shared tags, meaning, and community review. People can challenge a connection. The map preserves useful differences; no branch becomes “truth” simply because it is popular.</p>
     </main>
 
   </div>
@@ -146,6 +144,7 @@
   </dialog>
   <dialog id="threadDialog" class="thread-dialog"><button class="close thread-close" aria-label="Close">×</button><p class="eyebrow">Question thread</p><h2 id="threadTitle"></h2><div id="threadTags"></div><div class="thread-answer"><b>Leading answer</b><p id="threadAnswer"></p></div><fieldset><legend>Rate this answer</legend><div class="rating thread-rating"><button data-thread-rate="agree">Agree</button><button data-thread-rate="disagree">Disagree</button><button data-thread-rate="pass">Pass</button></div></fieldset><section class="comments"><h3>Discussion</h3><div id="commentList"></div><label for="commentInput">Add a constructive comment</label><textarea id="commentInput" maxlength="400" placeholder="Add evidence, experience, or respectful disagreement…"></textarea><div class="comment-foot"><span id="commentMessage">Strict language and intent screening applies.</span><button id="postComment">Post comment</button></div></section></dialog>
   <dialog id="safetyDialog" class="safety-dialog"><button class="close safety-close" aria-label="Close">×</button><p class="eyebrow">Request declined</p><h2>This won’t be answered by AI.</h2><p id="safetyReason">Words, intent, or purpose associated with harmful or malicious activity were detected. Reframe the question toward prevention, safety, recovery, or public benefit.</p><button class="primary safety-close">Rewrite safely</button></dialog>
+  <dialog id="dataDialog" class="data-dialog"><button class="close data-close" aria-label="Close">×</button><p class="eyebrow">Your context &amp; data</p><h2>Browser-local prototype</h2><p>Your current profile, questions, reactions, and comments stay in this browser. They are not uploaded or licensed for AI training.</p><div class="data-status"><b>Training dataset status</b><span>Not enrolled · no data transfer</span></div><p class="data-note">A future dataset option must explain the purpose, fields, license, retention, withdrawal limits, and who may use it before asking you to opt in.</p><div class="answer-actions"><button id="editProfile">Edit context</button><button id="clearLocalData" class="danger-action">Clear my local data</button></div></dialog>
   <script src="app.js"></script>
 </body>
 </html>

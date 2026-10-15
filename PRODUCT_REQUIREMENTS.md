@@ -82,9 +82,9 @@ Demographic collection is schema-driven. The initial contract is `dist/metadata/
 - Never reconstruct identity or combine the UID with advertising datasets.
 - Require stronger identity only for moderators or abuse-sensitive capabilities.
 
-## 8. Safety constitution
+## 8. Safety and shared-learning guidelines
 
-The constitution is versioned policy, not one enormous prompt:
+The guidelines are versioned, explainable commitments—not one enormous prompt:
 
 1. Human dignity, privacy, autonomy, non-discrimination, and child safety.
 2. Disallowed content and behavior.
@@ -96,6 +96,15 @@ The constitution is versioned policy, not one enormous prompt:
 8. Emergency changes, sunset dates, and public change logs.
 
 Every automated decision records the policy version, rule, action, and appeal route. New topics require safety tests before rollout.
+
+### Dataset learning boundary
+
+- Ordinary participation, community publication, research participation, and AI-training contribution are four separate choices.
+- Default training status is off. Consent must identify the dataset purpose, included fields, license, intended users, retention, and practical withdrawal limits.
+- Public question text is not automatically safe to redistribute as training data; re-screen, minimize, deduplicate, and document every export.
+- Dataset releases include provenance, consent receipts, removal history, coverage limitations, known biases, and intended/prohibited uses.
+- Preserve reasoned dissent and cohort-specific outcomes. Harm removal must not become viewpoint removal.
+- Evaluate models trained on the data for safety, factuality, pluralism, disparate performance, privacy leakage, and resistance to majority capture.
 
 All user-supplied question, profile free-text, alternative, comment, tag proposal, and search-report content passes through one server-side moderation gateway before storage or model invocation. The gateway combines normalization, language-aware profanity and abuse detection, PII detection/redaction, intent classification, topic policy, rate limits, and human review for uncertain cases. Disallowed questions receive a brief refusal and safe-reframing guidance; raw rejected content is not published. Search queries should be screened for abuse telemetry without preventing legitimate safety research. Client-side checks provide immediate feedback but are never the enforcement boundary.
 
@@ -139,7 +148,7 @@ Split only measured bottlenecks: AI orchestration, search/indexing, graph comput
 
 ### Phase 4 — Federated public infrastructure
 
-Regional data residency, interoperable schemas, independent governance councils, privacy-budgeted research APIs, and portable communities.
+Regional data residency, interoperable schemas, independent community stewardship groups, privacy-budgeted research APIs, and portable communities.
 
 ## 11. Reliability and scalability
 
@@ -153,7 +162,7 @@ Regional data residency, interoperable schemas, independent governance councils,
 - Graceful degradation: reading and search continue when AI is unavailable.
 - Feature flags and staged topic/region rollouts.
 
-## 12. Governance and anti-capture
+## 12. Community learning safeguards and anti-capture
 
 - Keep factual confidence, safety status, usefulness, and popularity separate.
 - Publish ranking factors and material algorithm changes.
@@ -184,7 +193,7 @@ Free infrastructure tiers are an MVP tool, not a permanent dependency. Track cos
 ## 15. First implementation backlog
 
 1. Select two low-risk pilot topics and define exclusions.
-2. Approve constitution v1 and moderation/appeal rules.
+2. Approve shared-learning guidelines v1 and moderation/appeal rules.
 3. Add pseudonymous identity and consent.
 4. Implement questions and maximum-five tag validation at all layers.
 5. Add answer orchestration using a strict public response schema.

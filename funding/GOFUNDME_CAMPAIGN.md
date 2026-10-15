@@ -55,7 +55,7 @@ If the final beneficiary, tax treatment, or budget changes, update the campaign 
 
 ## Milestones
 
-- **$5,000:** complete privacy/safety review and publish constitution v1.
+- **$5,000:** complete privacy/safety review and publish shared-learning guidelines v1.
 - **$10,000:** deploy the functional MVP with deletion controls and moderation queue.
 - **$15,000:** run the first 25-person closed pilot.
 - **$25,000:** run a 100-person pilot and publish an independent lessons-and-safety report.

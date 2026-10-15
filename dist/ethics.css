@@ -1,0 +1,5 @@
+.data-dialog{width:min(560px,calc(100% - 24px))}
+.data-status{display:flex;justify-content:space-between;gap:16px;background:#e8f3e6;border-left:4px solid var(--green);padding:14px;margin:20px 0}
+.data-status span,.data-note{color:var(--muted)}
+.danger-action{color:#8b332b!important;border-color:#d8aaa4!important}
+@media(max-width:700px){.data-status{flex-direction:column}}

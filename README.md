@@ -1,6 +1,6 @@
 # Common Ground AI
 
-Common Ground AI is a free public problem-solving network. People ask questions with limited, non-identifying context; AI proposes structured solutions; communities evaluate, improve, and connect those solutions into a living knowledge graph—the Tree of Life.
+Common Ground AI is a free public problem-solving and shared-learning network. People ask questions with limited, non-identifying context; AI proposes structured solutions; communities evaluate, improve, and connect those solutions into a living knowledge graph—the Tree of Life. It is designed to preserve diverse human reasoning, not manufacture one enforced consensus.
 
 ## Three modules
 
@@ -21,6 +21,7 @@ Serve the `dist/` directory with any static HTTP server. There is no build step.
 - Popularity does not equal truth, safety, or fairness.
 - Dissent and minority experiences remain visible.
 - The project stores concise public rationales—not private model chain-of-thought.
+- Participation is separate from training consent. Future dataset contributions require a specific, optional, informed opt-in.
 - Model and infrastructure providers remain replaceable.
 
 See [PRODUCT_REQUIREMENTS.md](PRODUCT_REQUIREMENTS.md) for the architecture, safety framework, data model, rollout, and first implementation backlog.
@@ -31,4 +32,4 @@ See the [funding strategy](funding/README.md) for the GoFundMe draft, grant pipe
 
 ## Status
 
-Early prototype. Contributions and discussion will open in stages after the initial constitution, moderation policy, and license are selected.
+Early prototype. Contributions and discussion will open in stages after the initial shared-learning guidelines, moderation policy, and license are selected.

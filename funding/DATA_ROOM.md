@@ -9,7 +9,7 @@ Use a private data room for sensitive documents. The public repository should co
 - Product requirements and deployment plan
 - Funding ethics and donor-influence policy
 - Public roadmap and milestone status
-- Safety constitution and moderation overview
+- Safety and shared-learning guidelines with a moderation overview
 - Aggregate pilot results and transparency reports
 - Team biographies without unnecessary personal details
 
@@ -38,7 +38,7 @@ Use a private data room for sensitive documents. The public repository should co
 - credit expiration and covered services;
 - final report status.
 
-## Governance before accepting material funding
+## Community stewardship before accepting material funding
 
 - Written conflict-of-interest policy
 - Two-person approval for material expenditures

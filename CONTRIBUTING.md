@@ -1,6 +1,6 @@
 # Contributing
 
-Common Ground AI is at the prototype stage. Before accepting production code, the project will establish its license, governance, safety constitution, moderation process, and contributor decision rights.
+Common Ground AI is at the prototype stage. Before accepting production code, the project will establish its license, community learning guidelines, safety commitments, moderation process, and contributor decision rights.
 
 For now:
 
