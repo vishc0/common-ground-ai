@@ -11,7 +11,7 @@ Launch a safe, invitation-only MVP for 50–100 participants in one or two low-r
 - [ ] Choose the first one or two low-risk pilot topics.
   - Suggested starting pair: household cost reduction and community resource coordination.
   - Explicitly exclude medical diagnosis, legal advice, financial trading, elections, self-harm, weapons, and emergencies from the first pilot.
-- [ ] Create or select the Cloudflare account that will own production resources.
+- [x] Create or select the Cloudflare account that will own production resources.
 - [ ] Decide who besides you, if anyone, needs Cloudflare administrator access.
 - [ ] Choose a working MVP domain or confirm that a Cloudflare-provided staging URL is acceptable initially.
 - [ ] Approve the plain-language shared-learning and safety guidelines before real participants are invited.
@@ -19,6 +19,15 @@ Launch a safe, invitation-only MVP for 50–100 participants in one or two low-r
 - [ ] Decide whether pilot questions may remain publicly readable after a participant deletes their profile, or must also be removed.
 - [ ] Review the future dataset principle: participation is not training consent; any dataset contribution requires a separate opt-in.
 - [ ] Set an initial monthly spending ceiling. Recommended MVP ceiling: $0 by default, with no automatic paid overages.
+
+### Credential setup completed
+
+- [x] Create the GitHub Environment named `Prod`.
+- [x] Store `CLOUDFLARE_API_TOKEN` in the `Prod` Environment secrets.
+- [x] Store `CLOUDFLARE_ACCOUNT_ID` in the `Prod` Environment secrets.
+- [ ] Configure the deployment workflow with `environment: Prod`; environment secrets are unavailable to jobs that omit this declaration.
+- [ ] Add required-reviewer or branch protection rules to the `Prod` Environment before automatic production deployment.
+- [ ] Verify the token with a read-only CI step without printing the token or secret values.
 
 ## Implementation tasks
 
