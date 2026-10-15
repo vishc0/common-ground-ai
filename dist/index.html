@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="modules.css" />
   <link rel="stylesheet" href="onboarding.css" />
+  <link rel="stylesheet" href="experience.css" />
 </head>
 <body>
   <section class="gate" id="gate" aria-labelledby="gateTitle">
@@ -62,7 +63,7 @@
           <button class="chip selected" data-group="location">📍 Northeast US</button>
           <button class="chip" data-group="age">Age 25–34</button>
           <button class="chip" data-group="role">First-time homeowner</button>
-          <button class="chip add">＋ Add context</button>
+          <button class="chip add" id="addContext">＋ Add / edit context</button>
         </div>
         <label for="question">What problem are you trying to solve?</label>
         <div class="composer">
@@ -72,9 +73,9 @@
         <div class="composer-foot"><span>🔒 Avoid names, addresses, or private details</span><span id="count">0 / 500</span></div>
         <label class="humanity-check"><input type="checkbox" id="humanityIntent"> I am asking in good faith and want the direction of this answer to benefit people.</label>
         <div class="tag-builder">
-          <div><b>Add up to 5 tags</b><small>Choose the most relevant ideas so this question can find its branch.</small></div>
+          <div><b>AI-suggested tags</b><small>Tags appear from your question. Review or remove them before submitting.</small></div>
           <div class="tag-options" id="askTags"><button data-tag="Home"># Home</button><button data-tag="Costs"># Costs</button><button data-tag="Community"># Community</button><button data-tag="Work"># Work</button><button data-tag="Wellbeing"># Wellbeing</button><button data-tag="Education"># Education</button><button data-tag="Environment"># Environment</button></div>
-          <span class="tag-count" id="tagCount">0 of 5 selected</span>
+          <span class="tag-count" id="tagCount">AI will select up to 5</span>
         </div>
       </section>
 
@@ -109,24 +110,22 @@
         <div class="filter-head"><b>Filter by tags</b><span id="filterCount">0 / 5</span></div>
         <div class="tag-options filters" id="filterTags"><button data-tag="Home">Home</button><button data-tag="Costs">Costs</button><button data-tag="Community">Community</button><button data-tag="Work">Work</button><button data-tag="Wellbeing">Wellbeing</button><button data-tag="Education">Education</button><button data-tag="Environment">Environment</button></div>
       </section>
-      <section class="results-head"><b id="resultCount">4 questions</b><span>Most useful first</span></section>
-      <section class="question-list" id="questionList">
-        <article data-title="neighbors share emergency home repair costs conflict" data-tags="Home,Costs,Community"><div><span class="tag"># Home</span><span class="tag"># Costs</span><span class="tag"># Community</span></div><h3>How can neighbors share the cost of emergency home repairs without creating conflict?</h3><footer><b>84% useful</b><span>326 voices</span><button>Join the discussion →</button></footer></article>
-        <article data-title="shift workers swap schedules short notice fair" data-tags="Work,Community"><div><span class="tag"># Work</span><span class="tag"># Community</span></div><h3>What is a fair way for shift workers to swap schedules at short notice?</h3><footer><b>71% useful</b><span>184 voices</span><button>Evaluate answers →</button></footer></article>
-        <article data-title="local cooling center older residents usable" data-tags="Community,Wellbeing,Environment"><div><span class="tag"># Community</span><span class="tag"># Wellbeing</span><span class="tag"># Environment</span></div><h3>How do we make a local cooling center actually usable for older residents?</h3><footer><b>91% useful</b><span>508 voices</span><button>See solution map →</button></footer></article>
-        <article data-title="teach household budgeting teenagers school" data-tags="Education,Costs,Home"><div><span class="tag"># Education</span><span class="tag"># Costs</span><span class="tag"># Home</span></div><h3>What is a practical way to teach household budgeting to teenagers?</h3><footer><b>68% useful</b><span>92 voices</span><button>Improve this answer →</button></footer></article>
-        <p class="empty-state hidden" id="emptyState">No branch matches yet. Your search may be the seed of a new one.</p>
-      </section>
+      <section class="results-head"><b id="resultCount">Questions</b><span>Dictionary search · content + tags</span></section>
+      <section class="question-list" id="questionList"></section>
+      <nav class="pagination" id="pagination" aria-label="Question pages"></nav>
     </main>
 
     <main id="map" class="view">
-      <section class="page-title"><p class="eyebrow">Module 03 · Living knowledge</p><h1>The Tree of Life</h1><p>Every question starts as a seed. Shared meaning forms roots, branches, and leaves over time.</p></section>
+      <section class="page-title"><p class="eyebrow">Module 03 · Under construction</p><h1>The Tree of Life</h1><p>A two-dimensional map of the first five knowledge levels. Every question begins as an unconnected seed.</p></section>
       <section class="tree-legend"><span><i class="seed-dot"></i> New seed</span><span><i class="branch-dot"></i> Connected branch</span><span><i class="fruit-dot"></i> Tested solution</span></section>
-      <section class="life-tree" aria-label="Interactive knowledge tree visualization">
-        <div class="canopy canopy-a"></div><div class="canopy canopy-b"></div><div class="canopy canopy-c"></div><div class="trunk"><span>COMMON<br>GROUND</span></div>
-        <button class="leaf l1" data-note="Home · Costs · 326 voices">Emergency repairs</button><button class="leaf l2" data-note="Community · Wellbeing · 508 voices">Cooling centers</button><button class="leaf l3" data-note="Work · Community · 184 voices">Shift swaps</button><button class="leaf l4" data-note="Education · Costs · 92 voices">Budgeting skills</button>
-        <button class="seed s1" data-note="A new, not-yet-connected question">New question</button><button class="seed s2" data-note="Waiting for related questions">New question</button>
-        <div class="tree-note" id="treeNote">Select a leaf to see the knowledge behind it.</div>
+      <section class="knowledge-map" aria-label="Five-level knowledge hierarchy">
+        <div class="map-status">2D prototype · relationships are illustrative</div>
+        <div class="knowledge-level level-1"><span>LEVEL 1 · PURPOSE</span><button data-note="The shared purpose connecting every branch">Human flourishing</button></div>
+        <div class="knowledge-level level-2"><span>LEVEL 2 · DOMAINS</span><button data-note="Questions about homes, resources and daily life">Living</button><button data-note="Questions about learning and skills">Learning</button><button data-note="Questions about work and opportunity">Work</button><button data-note="Questions about community systems">Community</button></div>
+        <div class="knowledge-level level-3"><span>LEVEL 3 · TAG SPACES</span><button data-note="Home · Costs · Maintenance">Home &amp; costs</button><button data-note="Education · Skills · Access">Education &amp; skills</button><button data-note="Jobs · Schedules · Fairness">Workplace fairness</button><button data-note="Wellbeing · Environment · Access">Community wellbeing</button></div>
+        <div class="knowledge-level level-4"><span>LEVEL 4 · QUESTION CLUSTERS</span><button data-note="Questions connected by shared tags and meaning">Emergency readiness</button><button data-note="Questions connected by shared tags and meaning">Practical learning</button><button data-note="Questions connected by shared tags and meaning">Coordination</button><button data-note="Questions connected by shared tags and meaning">Local resilience</button></div>
+        <div class="knowledge-level level-5"><span>LEVEL 5 · LEAVES</span><button data-note="Home · Costs · Community">Repair circle?</button><button data-note="Education · Costs · Home">Teach budgeting?</button><button data-note="Work · Community">Fair shift swaps?</button><button data-note="Community · Wellbeing · Environment">Cooling center?</button><button class="unlinked" data-note="New seed waiting for reliable connections">Unlinked seed</button></div>
+        <div class="tree-note" id="treeNote">Select a node to inspect its place in the hierarchy.</div>
       </section>
       <p class="tree-explain">Connections are suggested by shared tags, meaning, and community review. People can challenge a connection. No branch becomes “truth” simply because it is popular.</p>
     </main>
@@ -145,6 +144,8 @@
     <p id="thanks" class="thanks hidden">Saved to this browser. Your response can become part of the solution map when the secure backend is added.</p>
     <div class="answer-actions"><button id="followQuestion">＋ Follow question</button><button id="favoriteQuestion">♡ Favorite</button><button id="askAnother">Ask another →</button></div>
   </dialog>
+  <dialog id="threadDialog" class="thread-dialog"><button class="close thread-close" aria-label="Close">×</button><p class="eyebrow">Question thread</p><h2 id="threadTitle"></h2><div id="threadTags"></div><div class="thread-answer"><b>Leading answer</b><p id="threadAnswer"></p></div><fieldset><legend>Rate this answer</legend><div class="rating thread-rating"><button data-thread-rate="agree">Agree</button><button data-thread-rate="disagree">Disagree</button><button data-thread-rate="pass">Pass</button></div></fieldset><section class="comments"><h3>Discussion</h3><div id="commentList"></div><label for="commentInput">Add a constructive comment</label><textarea id="commentInput" maxlength="400" placeholder="Add evidence, experience, or respectful disagreement…"></textarea><div class="comment-foot"><span id="commentMessage">Strict language and intent screening applies.</span><button id="postComment">Post comment</button></div></section></dialog>
+  <dialog id="safetyDialog" class="safety-dialog"><button class="close safety-close" aria-label="Close">×</button><p class="eyebrow">Request declined</p><h2>This won’t be answered by AI.</h2><p id="safetyReason">Words, intent, or purpose associated with harmful or malicious activity were detected. Reframe the question toward prevention, safety, recovery, or public benefit.</p><button class="primary safety-close">Rewrite safely</button></dialog>
   <script src="app.js"></script>
 </body>
 </html>

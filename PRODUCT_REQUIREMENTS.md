@@ -22,14 +22,14 @@ It is not a popularity forum and it does not collect or reveal private model cha
 - Anonymous browsing and pseudonymous participation.
 - Optional coarse profile: country/region, age band, role/life stage, language, and relevant domain experience.
 - Never request exact address, birth date, legal identity, financial account, medical record, or employer identity for ordinary participation.
-- Question composer: title, description, desired outcome, attempted actions, and up to five tags.
+- Question composer: title, description, desired outcome, attempted actions, and up to five AI-ranked tags. The participant may remove or correct suggestions before submission.
 - AI response: summary, recommended steps, assumptions, tradeoffs, uncertainty, sources, safety notes, and escalation path.
 - Feedback: useful / partly useful / not useful, structured reason, optional alternative, and later outcome follow-up.
 - High-risk topics receive constrained responses and qualified-resource routing.
 
 ## 4. Module B — Explore and Participate
 
-- Full-text and semantic search.
+- Case-insensitive dictionary search across question text and tag aliases in the MVP, with paginated results; add semantic search after sufficient evaluation data exists.
 - Filter by up to five tags, coarse context relevance, recency, evidence level, and usefulness.
 - Question page: leading answer, credible alternatives, agreement, unresolved disagreement, sources, version history, and related branches.
 - Activities: evaluate, flag an assumption, submit evidence, propose an alternative, comment, follow, or report.
@@ -46,6 +46,7 @@ It is not a popularity forum and it does not collect or reveal private model cha
 - Users can inspect and challenge every proposed connection.
 - Visualization loads only a visible neighborhood, never the entire graph at once.
 - Disconnected seeds remain discoverable and valid.
+- The MVP renders a two-dimensional, progressively expandable five-level hierarchy: human need, domain, tag space, problem cluster, and question leaf.
 
 ## 6. Tag requirements
 
@@ -95,6 +96,8 @@ The constitution is versioned policy, not one enormous prompt:
 8. Emergency changes, sunset dates, and public change logs.
 
 Every automated decision records the policy version, rule, action, and appeal route. New topics require safety tests before rollout.
+
+All user-supplied question, profile free-text, alternative, comment, tag proposal, and search-report content passes through one server-side moderation gateway before storage or model invocation. The gateway combines normalization, language-aware profanity and abuse detection, PII detection/redaction, intent classification, topic policy, rate limits, and human review for uncertain cases. Disallowed questions receive a brief refusal and safe-reframing guidance; raw rejected content is not published. Search queries should be screened for abuse telemetry without preventing legitimate safety research. Client-side checks provide immediate feedback but are never the enforcement boundary.
 
 ## 9. MVP architecture
 
