@@ -70,6 +70,17 @@ It is not a popularity forum and it does not collect or reveal private model cha
 - `moderation_cases`, `appeals`, `audit_events`: accountable safety operations.
 - `consents`, `deletion_requests`: privacy and data-rights records.
 
+Demographic collection is schema-driven. The initial contract is `dist/metadata/demographics.schema.json`; every stored question links to a participant UID and a versioned snapshot of the coarse profile used for that answer. Production storage must separate participant/profile records from public question content and prevent public UID enumeration.
+
+### Anonymous UID lifecycle
+
+- Generate a random browser UID; never derive it from fingerprinting or demographic values.
+- Store it in first-party browser storage with clear disclosure and deletion controls.
+- Treat it as pseudonymous—not anonymous data and not authentication.
+- Allow replacement when lost; multiple UIDs per person are acceptable for the MVP.
+- Never reconstruct identity or combine the UID with advertising datasets.
+- Require stronger identity only for moderators or abuse-sensitive capabilities.
+
 ## 8. Safety constitution
 
 The constitution is versioned policy, not one enormous prompt:

@@ -25,6 +25,8 @@ Serve the `dist/` directory with any static HTTP server. There is no build step.
 
 See [PRODUCT_REQUIREMENTS.md](PRODUCT_REQUIREMENTS.md) for the architecture, safety framework, data model, rollout, and first implementation backlog.
 
+See [DEPLOYMENT_MVP.md](DEPLOYMENT_MVP.md) for the October 2026 free-tier deployment decision, quotas, request lifecycle, portability boundaries, and build sequence.
+
 ## Status
 
 Early prototype. Contributions and discussion will open in stages after the initial constitution, moderation policy, and license are selected.

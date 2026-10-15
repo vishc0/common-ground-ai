@@ -10,8 +10,26 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="modules.css" />
+  <link rel="stylesheet" href="onboarding.css" />
 </head>
 <body>
+  <section class="gate" id="gate" aria-labelledby="gateTitle">
+    <div class="gate-card">
+      <div class="gate-brand"><span class="mark">CG</span><span>Common Ground · Safety first</span></div>
+      <div id="termsStep">
+        <p class="eyebrow">Before you continue</p><h1 id="gateTitle">Terms, privacy &amp; safety notice</h1>
+        <div class="warning"><b>This software cannot reliably detect or remove every private detail.</b><p>Do not enter names, exact addresses, phone numbers, email addresses, account numbers, private records, secrets, or information about another person. Automated checks can miss information, especially when it is disguised or included intentionally.</p></div>
+        <ul class="plain-terms"><li>Answers are generated guidance, may be wrong, and are not professional medical, legal, financial, emergency, or safety advice.</li><li>Questions should be asked in good faith with a direction that could benefit people—not to target, exploit, deceive, or harm.</li><li>We minimize what we collect and try to flag risky content, but safeguards are imperfect. Submissions may be stored, moderated, or removed.</li><li>Your anonymous browser ID is not proof of identity. Losing browser data may create a new ID.</li></ul>
+        <label class="consent"><input type="checkbox" id="termsConsent"> I understand these limitations and will not submit identifying, confidential, illegal, or harmful information.</label>
+        <button class="primary" id="continueTerms" disabled>Continue safely →</button>
+        <small>Prototype notice · policy version 0.2 · not a substitute for a lawyer-reviewed Terms of Use and Privacy Notice.</small>
+      </div>
+      <div id="profileStep" class="hidden">
+        <p class="eyebrow">Context without identity</p><h1>Help answers fit real life.</h1><p class="gate-copy">These broad, optional attributes help the Tree of Life show where solutions work differently. Do not type personal details. Your selections stay in this browser in the prototype.</p>
+        <form id="profileForm"><div id="demographicFields" class="demographic-grid"></div><div class="profile-actions"><button type="button" class="ghost" id="skipProfile">Skip optional fields</button><button type="submit" class="primary">Enter Common Ground →</button></div></form>
+      </div>
+    </div>
+  </section>
   <div class="shell">
     <header>
       <a class="brand" href="#"><span class="mark">CG</span><span>common ground</span></a>
@@ -52,6 +70,7 @@
           <button id="askBtn">Explore solutions <span>→</span></button>
         </div>
         <div class="composer-foot"><span>🔒 Avoid names, addresses, or private details</span><span id="count">0 / 500</span></div>
+        <label class="humanity-check"><input type="checkbox" id="humanityIntent"> I am asking in good faith and want the direction of this answer to benefit people.</label>
         <div class="tag-builder">
           <div><b>Add up to 5 tags</b><small>Choose the most relevant ideas so this question can find its branch.</small></div>
           <div class="tag-options" id="askTags"><button data-tag="Home"># Home</button><button data-tag="Costs"># Costs</button><button data-tag="Community"># Community</button><button data-tag="Work"># Work</button><button data-tag="Wellbeing"># Wellbeing</button><button data-tag="Education"># Education</button><button data-tag="Environment"># Environment</button></div>
@@ -119,15 +138,12 @@
     <p class="eyebrow">A starting point—not a verdict</p>
     <h2>Your solution brief</h2>
     <div class="response-question" id="echoQuestion"></div>
-    <ol>
-      <li><b>Clarify the outcome.</b> Write down the smallest result that would meaningfully improve the situation.</li>
-      <li><b>Run a reversible test.</b> Try one low-cost action for seven days and record what changes.</li>
-      <li><b>Compare with peers.</b> Review solutions from people with similar context before scaling the approach.</li>
-    </ol>
+    <div class="answer-tiers"><article><span>01 · BEST-CASE SCENARIO</span><h3>A practical improvement you can test safely</h3><p>Define the smallest positive result, try a reversible step, and record what changes before expanding it.</p></article><article><span>02 · WHY</span><h3>Learning before scaling reduces avoidable harm</h3><p>A small test makes assumptions visible and lets people compare the proposal with lived experience.</p></article><article class="humanity-tier"><span>03 · THE DEEPER WHY</span><h3>Turn one person’s learning into reusable public value</h3><p>When context, limitations, outcomes, and respectful disagreement are preserved, others can adapt the insight without treating it as universal truth.</p></article></div>
     <div class="assumption"><b>Assumptions &amp; limits</b><p>This prototype response is illustrative. A production answer would cite sources, flag uncertainty, and route high-risk topics to qualified help.</p></div>
-    <fieldset><legend>Was this useful?</legend><div class="rating"><button data-rate="yes">Yes, it helped</button><button data-rate="partly">Partly</button><button data-rate="no">No</button></div></fieldset>
+    <fieldset><legend>What is your position?</legend><div class="rating"><button data-rate="yes">Agree</button><button data-rate="no">Disagree</button><button data-rate="pass">Pass</button></div></fieldset>
     <div id="feedback" class="feedback hidden"><label for="why">What should change?</label><textarea id="why" placeholder="Missing context, wrong assumption, unsafe step, or a better solution…"></textarea><button id="submitFeedback">Share feedback</button></div>
-    <p id="thanks" class="thanks hidden">Thank you. Your feedback becomes part of the solution map.</p>
+    <p id="thanks" class="thanks hidden">Saved to this browser. Your response can become part of the solution map when the secure backend is added.</p>
+    <div class="answer-actions"><button id="followQuestion">＋ Follow question</button><button id="favoriteQuestion">♡ Favorite</button><button id="askAnother">Ask another →</button></div>
   </dialog>
   <script src="app.js"></script>
 </body>

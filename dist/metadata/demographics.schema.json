@@ -1,0 +1,15 @@
+{
+  "schema_version": "0.2.0",
+  "purpose": "Optional coarse context used to compare how solutions work for different groups without requesting direct identifiers.",
+  "storage": "Prototype: browser localStorage only. Future: pseudonymous profile record linked by participant UID.",
+  "review_cadence": "Before each topic expansion and at least quarterly",
+  "prohibited_free_text": true,
+  "fields": [
+    {"id":"region","label":"Broad region","note":"Never an exact address","required":false,"options":["Prefer not to say","North America","Latin America & Caribbean","Europe","Middle East & North Africa","Sub-Saharan Africa","South Asia","East & Southeast Asia","Oceania","Other / mixed"]},
+    {"id":"age_band","label":"Age group","note":"Broad range only","required":false,"options":["Prefer not to say","Under 18","18–24","25–34","35–44","45–54","55–64","65+"]},
+    {"id":"community_setting","label":"Community setting","note":"Helps compare resource access","required":false,"options":["Prefer not to say","Urban","Suburban","Small town","Rural","Remote"]},
+    {"id":"life_stage","label":"Life stage","note":"Select the closest fit","required":false,"options":["Prefer not to say","Student / learner","Early career","Mid-career","Caregiver / parent","Retired","Between stages","Other"]},
+    {"id":"resource_context","label":"Resource context","note":"No income amount requested","required":false,"options":["Prefer not to say","Resources are very constrained","Some constraints","Generally stable","Well resourced"]},
+    {"id":"language","label":"Preferred response language","note":"Used for accessibility","required":false,"options":["English","Spanish","French","Hindi","Arabic","Mandarin Chinese","Other"]}
+  ]
+}
