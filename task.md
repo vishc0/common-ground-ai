@@ -56,8 +56,8 @@ Launch a safe, invitation-only MVP for 50–100 participants in one or two low-r
 - [x] Create the initial Queue and configure its Worker consumer.
 - [ ] Create a Turnstile widget and store its secret outside Git.
 - [ ] Configure Workers AI and a hard daily inference budget.
-- [ ] Deploy the staging Worker and static assets.
-- [ ] Apply migrations to staging.
+- [x] Deploy the initial production Worker and static assets at `https://common-ground-mvp.shivarama-aiagency.workers.dev`.
+- [x] Apply migration `0001_initial.sql` to the production D1 database.
 - [ ] Connect the frontend to the staging API.
 - [ ] Enable privacy-safe logs and quota alerts.
 - [ ] Run Ask → moderation → answer → Explore → thread end-to-end tests.
@@ -117,7 +117,16 @@ Launch a safe, invitation-only MVP for 50–100 participants in one or two low-r
 - [ ] Participant deletion and database restoration have both been tested.
 - [ ] Reading and search continue when AI generation is unavailable.
 - [ ] The pilot topic scope, exclusions, operator, and incident process are published.
-- [ ] The deployed commit and database migration version are recorded.
+- [x] The deployed commit and database migration version are recorded.
+
+## Current deployment
+
+- Worker URL: `https://common-ground-mvp.shivarama-aiagency.workers.dev`
+- Deployed commit: `ec0f8246fa595d436917b297a5eb778147ede32c`
+- Cloudflare Worker version: `b8689536-bd60-44f9-84c4-1c757ef776b2`
+- Database migration: `0001_initial.sql`
+- Deployed: 2026-10-15
+- Activation gate: create a Turnstile widget and add `TURNSTILE_SECRET_KEY` to the GitHub `Prod` environment before enabling participant sessions.
 
 ## Next action
 
