@@ -11,4 +11,29 @@ async function createQuestion(request,env,p){const input=await body(request),che
 async function listQuestions(request,env){const url=new URL(request.url),limit=Math.min(Number(url.searchParams.get('limit'))||20,50);const result=await env.DB.prepare("SELECT q.id,q.text,q.published_at,a.response_json FROM questions q JOIN answers a ON a.question_id=q.id WHERE q.status='published' ORDER BY q.published_at DESC LIMIT ?").bind(limit).all();return json({items:result.results.map(x=>({...x,answer:JSON.parse(x.response_json)}))})}
 async function router(request,env){const url=new URL(request.url);if(url.pathname==='/healthz')return json({ok:true,environment:env.APP_ENV});if(request.method==='POST'&&url.pathname==='/v1/sessions')return createSession(request,env);const p=await participant(request,env);if(!p)return json({error:'unauthorized'},401);if(request.method==='POST'&&url.pathname==='/v1/questions')return createQuestion(request,env,p);if(request.method==='GET'&&url.pathname==='/v1/questions')return listQuestions(request,env);if(request.method==='DELETE'&&url.pathname==='/v1/me'){await env.DB.prepare('UPDATE participants SET deleted_at=? WHERE id=?').bind(new Date().toISOString(),p.participant_id).run();return new Response(null,{status:204,headers:{'set-cookie':'cg_session=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax'}})}return env.ASSETS.fetch(request)}
 async function processJob(message,env){const {job_id,question_id}=message.body||{},q=await env.DB.prepare("SELECT text FROM questions WHERE id=? AND status='pending'").bind(question_id).first();if(!q)return;try{const prompt=`Return JSON only with keys best_case, why, deeper_why, assumptions, safety_notes. Give concise, reversible, public-benefit guidance. Question: ${q.text}`;const result=await env.AI.run(env.AI_MODEL,{prompt,max_tokens:500});const text=result.response||result.result||'',parsed=JSON.parse(text.replace(/^```json\s*|\s*```$/g,''));for(const key of ['best_case','why','deeper_why','assumptions','safety_notes'])if(typeof parsed[key]!=='string')throw new Error('invalid_ai_schema');const now=new Date().toISOString();await env.DB.batch([env.DB.prepare('INSERT INTO answers VALUES(?,?,?,?,?,?)').bind(uid(),question_id,JSON.stringify(parsed),env.AI_MODEL,'0.3',now),env.DB.prepare("UPDATE questions SET status='published',published_at=? WHERE id=?").bind(now,question_id),env.DB.prepare("UPDATE outbox_jobs SET status='complete',updated_at=? WHERE id=?").bind(now,job_id)])}catch(error){await env.DB.prepare("UPDATE questions SET status='generation_failed' WHERE id=?").bind(question_id).run();throw error}}
-export default {fetch:router,async queue(batch,env){for(const message of batch.messages){await processJob(message,env);message.ack()}}};
+async function api(request,env){
+  const url=new URL(request.url),path=url.pathname;
+  if(path==='/v1/session'){const p=await participant(request,env);return p?json({ok:true}):json({error:'unauthorized'},401)}
+  if(!path.startsWith('/v1/')&&path!=='/healthz')return env.ASSETS.fetch(request);
+  if(path==='/v1/config')return json({turnstile_site_key:env.TURNSTILE_SITE_KEY||'',sessions_available:Boolean(env.TURNSTILE_SECRET_KEY&&env.TURNSTILE_SITE_KEY)});
+  const match=path.match(/^\/v1\/questions\/([a-z0-9-]+)(\/comments)?$/i);
+  if(request.method==='GET'&&(path==='/v1/questions'||match)){
+    const rows=await env.DB.prepare("SELECT q.*,a.response_json,(SELECT group_concat(t.label) FROM question_tags qt JOIN tags t ON t.id=qt.tag_id WHERE qt.question_id=q.id) AS tags FROM questions q LEFT JOIN answers a ON a.question_id=q.id WHERE q.status='published' OR q.id=? ORDER BY q.created_at DESC LIMIT 200").bind(match?.[1]||'').all();
+    const items=rows.results.map(q=>({id:q.id,title:q.text,status:q.status,tags:q.tags?.split(',')||[],answer:q.response_json?JSON.parse(q.response_json):null}));
+    if(!match)return json({items:items.filter(q=>q.status==='published')});
+    const q=items.find(q=>q.id===match[1]);if(!q)return json({error:'not_found'},404);
+    if(q.status!=='published'){const p=await participant(request,env);const owner=rows.results.find(q=>q.id===match[1]);if(!p||p.participant_id!==owner.participant_id)return json({error:'not_found'},404)}
+    if(match[2]){const comments=await env.DB.prepare('SELECT id,text,created_at FROM comments WHERE question_id=? ORDER BY created_at LIMIT 100').bind(q.id).all();return json({items:comments.results})}
+    return json(q);
+  }
+  if(request.method==='POST'&&match?.[2]){
+    if(request.headers.get('origin')&&request.headers.get('origin')!==url.origin)return json({error:'invalid_origin'},403);
+    const p=await participant(request,env);if(!p)return json({error:'unauthorized'},401);
+    const input=await body(request),checked=screen(input?.text);if(!checked.ok)return json({error:'content_rejected',reason:checked.reason},422);
+    const q=await env.DB.prepare("SELECT id FROM questions WHERE id=? AND status='published'").bind(match[1]).first();if(!q)return json({error:'not_found'},404);
+    const id=uid(),created_at=new Date().toISOString();await env.DB.prepare('INSERT INTO comments VALUES(?,?,?,?,?)').bind(id,q.id,p.participant_id,checked.value,created_at).run();return json({id,text:checked.value,created_at},201);
+  }
+  if(request.method==='POST'&&request.headers.get('origin')&&request.headers.get('origin')!==url.origin)return json({error:'invalid_origin'},403);
+  return router(request,env);
+}
+export default {async fetch(request,env){try{return await api(request,env)}catch{return json({error:'service_unavailable'},503)}},async queue(batch,env){for(const message of batch.messages){try{await processJob(message,env);message.ack()}catch{message.retry()}}}};
